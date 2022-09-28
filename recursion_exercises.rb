@@ -46,9 +46,34 @@ def exp_2(base,exp)
     end
 end
 
-p exp_2(2,0)
-p exp_2(2,1)
-p exp_2(2,2)
-p exp_2(2,3)
-p exp_2(2,4)
-p exp_2(2,5)
+# p exp_2(2,0)
+# p exp_2(2,1)
+# p exp_2(2,2)
+# p exp_2(2,3)
+# p exp_2(2,4)
+# p exp_2(2,5)
+
+# $count = 0
+def deep_dup(arr)
+    # return arr if !arr.is_a?(Array)
+
+    new_arr = []
+
+    arr.each do |ele|
+        if !ele.is_a?(Array)
+            new_arr << ele
+        else
+            new_arr << deep_dup(ele)
+            # $count += 1
+        end
+    end
+
+    new_arr
+end
+# a = [[1], [2], [[3], [[4]]]]
+# p a[0].object_id
+# p deep_dup(a)
+# p deep_dup(a[0]).object_id
+# p $count
+
+
