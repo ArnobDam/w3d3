@@ -86,6 +86,41 @@ def fibonacci(n)
    previous + [previous[-1] + previous[-2]]
 end
 
-p fibonacci(7)
+# p fibonacci(7)
+
+def bsearch(array, target)
+    return nil if array.length == 0
+
+    mid_pos = array.length / 2
+
+    left = array[0...mid_pos]
+    right = array[mid_pos+1..-1]
+
+    if array[mid_pos] == target
+        mid_pos
+    elsif target < array[mid_pos]
+        bsearch(left,target)
+    else
+        result = bsearch(right,target)
+
+        return nil if result == nil
+
+        result + mid_pos + 1
+    end
+end
+
+a = [1,2,3,4]
+b = [1,2,3,4,5]
+
+# p bsearch(a,4)
+# p bsearch(b,6)
+
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 
