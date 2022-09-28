@@ -28,8 +28,27 @@ def exp_1(base,exp)
     base * exp_1(base,exp-1)
 end
 
-p exp_1(2,0)
-p exp_1(2,1)
-p exp_1(2,2)
-p exp_1(2,3)
+# p exp_1(2,0)
+# p exp_1(2,1)
+# p exp_1(2,2)
+# p exp_1(2,3)
 
+def exp_2(base,exp)
+    return 1 if exp == 0
+    return base if exp == 1
+    
+    if exp.even?  
+        even_case = exp_2(base,exp/2)
+        even_case * even_case
+    else
+        odd_case = exp_2(base,(exp-1)/2)
+        base * odd_case * odd_case
+    end
+end
+
+p exp_2(2,0)
+p exp_2(2,1)
+p exp_2(2,2)
+p exp_2(2,3)
+p exp_2(2,4)
+p exp_2(2,5)
